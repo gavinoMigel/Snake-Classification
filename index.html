@@ -4,27 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Classification App</title>
+
+    <meta property="og:title" content="Snake Classification App">
+    <meta property="og:description" content="Research on identifying snakes in the Philippines.">
+    <meta property="og:url" content="https://gavinomigel.github.io/Snake-Classification/">
     
-    <!-- Facebook SDK -->
-    <script async defer crossorigin="anonymous" 
-        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0&appId=1680016009555630&autoLogAppEvents=1" 
-        nonce="XYZ123">
-    </script>
 </head>
 <body>
     <h1>Welcome to the Snake Classification App</h1>
     <p>This website provides details about our research on identifying snakes in the Philippines.</p>
     
-    <!-- Facebook Login Button -->
+    <!-- Default Facebook Login Button -->
     <div class="fb-login-button" 
-        data-width="" 
+        data-width="300" 
         data-size="large" 
         data-button-type="continue_with" 
         data-layout="default" 
         data-auto-logout-link="true" 
         data-use-continue-as="true">
     </div>
-    
+
+    <!-- Manual Login Button -->
+    <button onclick="fbLogin()">Login with Facebook</button>
+
     <!-- Facebook SDK Initialization and Login Handling -->
     <script>
         window.fbAsyncInit = function() {
@@ -38,14 +40,22 @@
             FB.AppEvents.logPageView();   
         };
 
-        function checkLoginState() {
-            FB.getLoginStatus(function(response) {
-                if (response.status === 'connected') {
-                    console.log('User is logged in:', response);
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function fbLogin() {
+            FB.login(function(response) {
+                if (response.authResponse) {
+                    console.log('User logged in:', response);
                 } else {
-                    console.log('User is not logged in.');
+                    console.log('User cancelled login.');
                 }
-            });
+            }, {scope: 'public_profile,email,user_posts'});
         }
     </script>
 </body>
