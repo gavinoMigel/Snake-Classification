@@ -58,17 +58,16 @@
             }, {scope: 'public_profile,email,user_posts'});
         }
 
-        function checkLoginState() {
+        window.checkLoginState = function() {
             FB.getLoginStatus(function(response) {
-            console.log("Login status response:", response); // Add this line
-        if (response.status === 'connected') {
-            console.log('User is logged in:', response);
-        } else {
-            console.log('User is not logged in.');
-        }
-    });
-}
-
+                console.log("Login status response:", response);
+                if (response.status === 'connected') {
+                    console.log('User is logged in:', response);
+                } else {
+                    console.log('User is not logged in.');
+                }
+            });
+        };
     </script>
 </body>
 </html>
