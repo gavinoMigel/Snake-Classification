@@ -8,22 +8,11 @@
     <meta property="og:title" content="Snake Classification App">
     <meta property="og:description" content="Research on identifying snakes in the Philippines.">
     <meta property="og:url" content="https://gavinomigel.github.io/Snake-Classification/">
-    
 </head>
 <body>
     <h1>Welcome to the Snake Classification App</h1>
     <p>This website provides details about our research on identifying snakes in the Philippines.</p>
     
-    <!-- Default Facebook Login Button -->
-    <div class="fb-login-button" 
-        data-width="300" 
-        data-size="large" 
-        data-button-type="continue_with" 
-        data-layout="default" 
-        data-auto-logout-link="true" 
-        data-use-continue-as="true">
-    </div>
-
     <!-- Manual Login Button -->
     <button onclick="fbLogin()">Login with Facebook</button>
 
@@ -57,17 +46,6 @@
                 }
             }, {scope: 'public_profile,email,user_posts'});
         }
-
-        window.checkLoginState = function() {
-            FB.getLoginStatus(function(response) {
-                console.log("Login status response:", response);
-                if (response.status === 'connected') {
-                    console.log('User is logged in:', response);
-                } else {
-                    console.log('User is not logged in.');
-                }
-            });
-        };
     </script>
 </body>
 </html>
